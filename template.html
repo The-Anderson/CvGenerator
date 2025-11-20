@@ -12,9 +12,8 @@
         h1 { margin: 0 0 5px 0; font-size: 2.2em; text-transform: uppercase; letter-spacing: 1px; }
         .subtitle { font-size: 1.1em; color: #555; font-weight: bold; margin-bottom: 10px; }
         
-        /* Estilo especial para los contactos */
         .contact-info { font-size: 0.95em; color: #444; margin-top: 10px; }
-        .contact-item { display: block; margin-bottom: 3px; } /* Pone cada link en una línea nueva */
+        .contact-item { display: block; margin-bottom: 3px; } 
         .contact-label { font-weight: bold; color: #666; font-size: 0.9em; margin-right: 5px; }
         
         section { margin-bottom: 25px; }
@@ -31,7 +30,11 @@
         .skills-list { list-style: none; padding: 0; }
         .skills-list li { margin-bottom: 5px; }
         
+        /* IMPORTANTE: Esto hace que el texto largo respete los saltos de línea */
+        .about-text { white-space: pre-wrap; margin-top: 10px; color: #444; font-size: 0.95em; }
+
         .footer { margin-top: 40px; font-size: 0.75em; color: #666; text-align: center; border-top: 1px solid #eee; padding-top: 15px; }
+        .footer-link { color: #444; font-weight: bold; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -43,7 +46,6 @@
             <div class="contact-item">
                 📍 {{ info.location }} • ✉️ {{ info.email }}
             </div>
-            
             <div class="contact-item">
                 <span class="contact-label">LinkedIn:</span> 
                 <a href="{{ info.linkedin }}" target="_blank">linkedin.com/in/emanuel-laiolo-300b31313</a>
@@ -52,8 +54,7 @@
                 <span class="contact-label">GitHub Repo:</span> 
                 <a href="{{ info.github }}" target="_blank">github.com/Emanuel-Laiolo/CvGenerator</a>
             </div>
-          
-        </div>
+            </div>
 
         <p style="margin-top: 15px; color: #444;">{{ summary }}</p>
     </header>
@@ -101,9 +102,15 @@
         {% endfor %}
     </section>
     
+    <section>
+        <h2>About Me</h2>
+        <div class="about-text">{{ about }}</div>
+    </section>
+
     <div class="footer">
-        This CV was generated programmatically using Python & Jinja2.
-        <br>See the code at: <strong>github.com/Emanuel-Laiolo/CvGenerator</strong>
+        CV generated programmatically using Python & Jinja2.<br>
+        Live Web Version: <a href="{{ info.website }}" class="footer-link" target="_blank">{{ info.website }}</a><br>
+        Code: <strong>github.com/Emanuel-Laiolo/CvGenerator</strong>
     </div>
 </body>
 </html>
