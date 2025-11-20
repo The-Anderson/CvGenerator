@@ -29,14 +29,12 @@
     </style>
 </head>
 <body>
-   <header class="header">
+    <header class="header">
         <h1>{{ info.name }}</h1>
         <div class="subtitle">{{ info.title }}</div>
         <div class="contact-info">
             {{ info.location }} • {{ info.email }} <br>
-            <a href="{{ info.linkedin }}" target="_blank">LinkedIn</a> • 
-            <a href="{{ info.github }}" target="_blank">GitHub</a> • 
-            <a href="{{ info.portfolio }}" target="_blank">Portfolio</a>
+            LinkedIn • GitHub • Portfolio: Yogalorena.com
         </div>
         <p style="margin-top: 15px; color: #444;">{{ summary }}</p>
     </header>
@@ -85,7 +83,7 @@
     </section>
     
     <div class="footer">
-        CV generated programmatically using Python & Jinja2. Source code available at {{ info.github }}
+        CV generated programmatically using Python & Jinja2. Check the README in this repo for contact links.
     </div>
 </body>
 </html>
