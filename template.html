@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - {{ info.name }}</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #222; max-width: 850px; margin: 0 auto; padding: 40px; line-height: 1.5; }
+        a { color: #0056b3; text-decoration: none; }
+        .header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+        h1 { margin: 0 0 5px 0; font-size: 2.2em; text-transform: uppercase; letter-spacing: 1px; }
+        .subtitle { font-size: 1.1em; color: #555; font-weight: bold; margin-bottom: 10px; }
+        .contact-info { font-size: 0.9em; color: #666; }
+        
+        section { margin-bottom: 25px; }
+        h2 { font-size: 1.3em; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 15px; color: #333; }
+        
+        .job { margin-bottom: 20px; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .role { font-weight: bold; font-size: 1.05em; }
+        .company { font-style: italic; color: #444; }
+        .dates { font-size: 0.9em; color: #777; }
+        .job-desc { margin-top: 5px; margin-bottom: 5px; text-align: justify; }
+        .stack { font-size: 0.85em; background-color: #f4f4f4; padding: 2px 6px; border-radius: 4px; color: #444; display: inline-block; margin-top: 2px;}
+        
+        .skills-list { list-style: none; padding: 0; }
+        .skills-list li { margin-bottom: 5px; }
+        
+        .footer { margin-top: 40px; font-size: 0.75em; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>{{ info.name }}</h1>
+        <div class="subtitle">{{ info.title }}</div>
+        <div class="contact-info">
+            {{ info.location }} • {{ info.email }} <br>
+            <a href="https://{{ info.linkedin }}">LinkedIn</a> • <a href="https://{{ info.github }}">GitHub</a> • <a href="https://{{ info.portfolio }}">Portfolio</a>
+        </div>
+        <p style="margin-top: 15px; color: #444;">{{ summary }}</p>
+    </header>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <ul class="skills-list">
+            {% for skill in skills %}
+            <li>🔹 {{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Professional Experience & Projects</h2>
+        {% for job in experience %}
+        <div class="job">
+            <div class="job-header">
+                <div>
+                    <span class="role">{{ job.role }}</span> | <span class="company">{{ job.company }}</span>
+                </div>
+                <span class="dates">{{ job.dates }}</span>
+            </div>
+            <p class="job-desc">{{ job.description }}</p>
+            {% if job.stack %}
+            <div class="stack"><strong>Stack:</strong> {{ job.stack }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        {% for edu in education %}
+        <div class="job">
+            <div class="job-header">
+                <span class="role">{{ edu.degree }}</span>
+                <span class="dates">{{ edu.year }}</span>
+            </div>
+            <div class="company">{{ edu.institution }}</div>
+            {% if edu.description %}
+            <p class="job-desc" style="font-size: 0.9em;">{{ edu.description }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    
+    <div class="footer">
+        CV generated programmatically using Python & Jinja2. Source code available at {{ info.github }}
+    </div>
+</body>
+</html>

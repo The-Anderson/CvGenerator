@@ -1,0 +1,53 @@
+{
+  "info": {
+    "name": "Emanuel",
+    "title": "Full Stack Developer & Data Specialist",
+    "location": "Kraków, Poland",
+    "email": "ema_laiolo@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/emanuel-laiolo-300b31313/?locale=en_US&trk=opento_sprofile_goalscard",
+    "github": "https://github.com/The-Anderson"
+  },
+  "summary": "Software Developer based in Kraków with 6+ years of experience. Dual Argentine/Italian citizen (EU work authorization). UTN Graduate (University Programmer). Expert in building full-stack web applications (React/TypeScript) and data analysis systems. Passionate about integrating AI into workflows; active user of Claude Code, Gemini, and Copilot to accelerate development. Open to remote projects with flexible hours.",
+  "skills": [
+    "Frontend: React, TypeScript, Vite, Tailwind CSS, Framer Motion, Shadcn/ui",
+    "Backend: Node.js, PostgreSQL, BaaS, Supabase, SQL, Stripe Integration",
+    "AI Toolkit: Python, Claude Code, Gemini, ChatRTX, GitHub Copilot",
+    "Languages: Spanish (Native), English (Fluent)"
+  ],
+  "experience": [
+    {
+      "role": "Lead Full Stack Developer & Administrator",
+      "company": "Yogalorena.com",
+      "dates": "Present",
+      "description": "Developed and currently manage a VOD platform with payment and subscription systems for online yoga services. Built with a focus on rapid development environment and high performance.",
+      "stack": "React, TypeScript, Vite, Tailwind CSS, Shadcn/ui, PostgreSQL, Stripe, Cloudflare Stream, Resend."
+    },
+    {
+      "role": "AI & Python Automation Developer",
+      "company": "Independent Projects",
+      "dates": "2022 - 2024",
+      "description": "Trained custom AI models using Python. Developed a Neural Network for OCR (Optical Character Recognition) to compare images and automate complex decision-making processes based on visual inputs.",
+      "stack": "Python, Neural Networks, OCR, Image Processing."
+    },
+    {
+      "role": "Algorithmic Data Analyst",
+      "company": "Private Quantitative Project",
+      "dates": "2018 - 2022",
+      "description": "Created a mathematical bankroll management system at age 20. Utilized solvers and a multi-terabyte database to predict Equity, EV (Expected Value), risk, and profit based on statistical probability.",
+      "stack": "SQL, Big Data (Multi-TB DB), Solvers, Statistics & Probability."
+    }
+  ],
+  "education": [
+    {
+      "degree": "University Degree in Programming (Técnico Universitario en Programación)",
+      "institution": "UTN (Universidad Tecnológica Nacional) - Argentina",
+      "year": "Graduated"
+    },
+    {
+      "degree": "Continuous Learning (AI & Tech)",
+      "institution": "Self-taught",
+      "year": "Ongoing",
+      "description": "Advanced usage of AI tools for code optimization: Claude Code, Codex, ChatRTX and GPT-5 (Personal use)."
+    }
+  ]
+}
