@@ -20,7 +20,47 @@
         h2 { font-size: 1.3em; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 15px; color: #333; }
         
         .job { margin-bottom: 20px; }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+        /* CSS para el Dropdown */
+        .job-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            cursor: pointer; 
+            position: relative; 
+            padding-right: 20px; 
+        }
+        .job-header::after { 
+            content: '▼'; 
+            position: absolute; 
+            right: 0; 
+            font-size: 0.8em; 
+            color: #555;
+            transition: transform 0.3s;
+        }
+        .job-header.active::after { 
+            transform: rotate(180deg); 
+        }
+        .job-content {
+            display: none;
+            padding-top: 5px;
+        }
+        .job-content.show {
+            display: block;
+        }
+        /* REGLAS EXCLUSIVAS PARA PDF / IMPRESIÓN */
+        @media print {
+            .job-content {
+                display: block !important;
+            }
+            .job-header::after {
+                content: none !important;
+            }
+            .job-header {
+                cursor: default !important;
+                padding-right: 0 !important;
+            }
+        }
+        /* Fin CSS para el Dropdown */
         .role { font-weight: bold; font-size: 1.05em; }
         .company { font-style: italic; color: #444; }
         .dates { font-size: 0.9em; color: #777; }
@@ -40,7 +80,8 @@
 <body>
     <header class="header">
         <h1>{{ info.name }}</h1>
-        <div class="subtitle">{{ info.title }}</div>
+        
+        <div class="subtitle" style="font-size: 1.1em; color: #555; font-style: italic; margin-bottom: 10px;">{{ info.title }}</div>
         
         <div class="contact-info">
             <div class="contact-item">
@@ -57,7 +98,29 @@
             </div>
 
         <p style="margin-top: 15px; color: #444;">{{ summary }}</p>
-    </header>
+
+        {% for edu in education %}
+            {% if edu.subjects %}
+                <div class="job" style="margin-top: 5px; border-top: 1px solid #ddd; padding-top: 5px;">
+                    <div class="job-header" id="subjects-header"> 
+                        <span class="role" style="font-weight: bold;">[+] Mostrar asignaturas cursadas</span>
+                        <span class="dates">{{ edu.institution }}</span>
+                    </div>
+                    <div class="job-content" id="subjects-content">
+                        {% for semester_data in edu.subjects %}
+                            <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; font-size: 0.95em;">{{ semester_data.semester }}:</p>
+                            <ul style="list-style-type: disc; margin-left: 30px; padding-left: 0; font-size: 0.9em;">
+                                {% for course in semester_data.courses %}
+                                    <li>{{ course }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                {# NO usamos 'break' aquí para evitar el error de Jinja2 #}
+            {% endif %}
+        {% endfor %}
+        </header>
 
     <section>
         <h2>Technical Skills</h2>
@@ -107,6 +170,29 @@
         <div class="about-text">{{ about }}</div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script específico para el desplegable de materias
+            var header = document.getElementById('subjects-header');
+            var content = document.getElementById('subjects-content');
+            
+            if (header && content) {
+                header.addEventListener('click', function() {
+                    content.classList.toggle('show');
+                    this.classList.toggle('active');
+
+                    // Cambiar el texto del header
+                    var roleSpan = this.querySelector('.role');
+                    if (content.classList.contains('show')) {
+                        roleSpan.textContent = "[-] Ocultar asignaturas cursadas";
+                    } else {
+                        roleSpan.textContent = "[+] Mostrar asignaturas cursadas";
+                    }
+                });
+            }
+        });
+    </script>
+    
     <div class="footer">
         CV generated programmatically using Python & Jinja2.<br>
         Live Web Version: <a href="{{ info.website }}" class="footer-link" target="_blank">{{ info.website }}</a><br>

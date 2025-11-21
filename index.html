@@ -20,7 +20,47 @@
         h2 { font-size: 1.3em; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 15px; color: #333; }
         
         .job { margin-bottom: 20px; }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+        /* CSS para el Dropdown */
+        .job-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            cursor: pointer; 
+            position: relative; 
+            padding-right: 20px; 
+        }
+        .job-header::after { 
+            content: '▼'; 
+            position: absolute; 
+            right: 0; 
+            font-size: 0.8em; 
+            color: #555;
+            transition: transform 0.3s;
+        }
+        .job-header.active::after { 
+            transform: rotate(180deg); 
+        }
+        .job-content {
+            display: none;
+            padding-top: 5px;
+        }
+        .job-content.show {
+            display: block;
+        }
+        /* REGLAS EXCLUSIVAS PARA PDF / IMPRESIÓN */
+        @media print {
+            .job-content {
+                display: block !important;
+            }
+            .job-header::after {
+                content: none !important;
+            }
+            .job-header {
+                cursor: default !important;
+                padding-right: 0 !important;
+            }
+        }
+        /* Fin CSS para el Dropdown */
         .role { font-weight: bold; font-size: 1.05em; }
         .company { font-style: italic; color: #444; }
         .dates { font-size: 0.9em; color: #777; }
@@ -40,7 +80,8 @@
 <body>
     <header class="header">
         <h1>Emanuel</h1>
-        <div class="subtitle">Full Stack Developer & Data Specialist</div>
+        
+        <div class="subtitle" style="font-size: 1.1em; color: #555; font-style: italic; margin-bottom: 10px;">Full Stack Developer & Data Specialist</div>
         
         <div class="contact-info">
             <div class="contact-item">
@@ -57,7 +98,78 @@
             </div>
 
         <p style="margin-top: 15px; color: #444;">Software Developer based in Kraków with 6+ years of experience. Dual Argentine/Italian citizen (EU work authorization). UTN Graduate (University Programmer). Expert in building full-stack web applications (React/TypeScript) and data analysis systems. Passionate about integrating AI into workflows; active user of Claude Code, Gemini, and Copilot to accelerate development. Open to remote projects with flexible hours.</p>
-    </header>
+
+        
+            
+                <div class="job" style="margin-top: 5px; border-top: 1px solid #ddd; padding-top: 5px;">
+                    <div class="job-header" id="subjects-header"> 
+                        <span class="role" style="font-weight: bold;">[+] Mostrar asignaturas cursadas</span>
+                        <span class="dates">Universidad Tecnológica Nacional (UTN)</span>
+                    </div>
+                    <div class="job-content" id="subjects-content">
+                        
+                            <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; font-size: 0.95em;">Primer Cuatrimestre:</p>
+                            <ul style="list-style-type: disc; margin-left: 30px; padding-left: 0; font-size: 0.9em;">
+                                
+                                    <li>Programación I</li>
+                                
+                                    <li>Arquitectura y Sistemas Operativos</li>
+                                
+                                    <li>Matemática</li>
+                                
+                                    <li>Organización empresarial</li>
+                                
+                            </ul>
+                        
+                            <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; font-size: 0.95em;">Segundo Cuatrimestre:</p>
+                            <ul style="list-style-type: disc; margin-left: 30px; padding-left: 0; font-size: 0.9em;">
+                                
+                                    <li>Programación II</li>
+                                
+                                    <li>Probabilidad y Estadística</li>
+                                
+                                    <li>Base de Datos I</li>
+                                
+                                    <li>Inglés I</li>
+                                
+                            </ul>
+                        
+                            <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; font-size: 0.95em;">Tercer Cuatrimestre:</p>
+                            <ul style="list-style-type: disc; margin-left: 30px; padding-left: 0; font-size: 0.9em;">
+                                
+                                    <li>Programación III</li>
+                                
+                                    <li>Base de Datos II</li>
+                                
+                                    <li>Metodología de Sistemas I</li>
+                                
+                                    <li>Inglés II</li>
+                                
+                            </ul>
+                        
+                            <p style="margin-top: 10px; margin-bottom: 5px; font-weight: bold; font-size: 0.95em;">Cuarto Cuatrimestre:</p>
+                            <ul style="list-style-type: disc; margin-left: 30px; padding-left: 0; font-size: 0.9em;">
+                                
+                                    <li>Programación IV</li>
+                                
+                                    <li>Metodología de Sistemas II</li>
+                                
+                                    <li>Introducción al análisis de datos</li>
+                                
+                                    <li>Legislación</li>
+                                
+                                    <li>Gestión de desarrollo de software</li>
+                                
+                            </ul>
+                        
+                    </div>
+                </div>
+                
+            
+        
+            
+        
+        </header>
 
     <section>
         <h2>Technical Skills</h2>
@@ -123,10 +235,12 @@
         
         <div class="job">
             <div class="job-header">
-                <span class="role">University Degree in Programming (Técnico Universitario en Programación)</span>
-                <span class="dates">Graduated</span>
+                <span class="role">University Programmer Technician</span>
+                <span class="dates">2018 - 2020</span>
             </div>
-            <div class="company">UTN (Universidad Tecnológica Nacional) - Argentina</div>
+            <div class="company">Universidad Tecnológica Nacional (UTN)</div>
+            
+            <p class="job-desc" style="font-size: 0.9em;">I graduate of 'University Technician in Programming' from the National Technical University of Argentina.</p>
             
         </div>
         
@@ -167,6 +281,29 @@ I'm happy to answer any questions about myself.
 I'm looking to join projects/jobs that require someone to work remotely, with flexible hours and adaptable to all types of projects/jobs, and interested in participating in worthwhile projects.</div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script específico para el desplegable de materias
+            var header = document.getElementById('subjects-header');
+            var content = document.getElementById('subjects-content');
+            
+            if (header && content) {
+                header.addEventListener('click', function() {
+                    content.classList.toggle('show');
+                    this.classList.toggle('active');
+
+                    // Cambiar el texto del header
+                    var roleSpan = this.querySelector('.role');
+                    if (content.classList.contains('show')) {
+                        roleSpan.textContent = "[-] Ocultar asignaturas cursadas";
+                    } else {
+                        roleSpan.textContent = "[+] Mostrar asignaturas cursadas";
+                    }
+                });
+            }
+        });
+    </script>
+    
     <div class="footer">
         CV generated programmatically using Python & Jinja2.<br>
         Live Web Version: <a href="https://emanuel-laiolo.github.io/CvGenerator/" class="footer-link" target="_blank">https://emanuel-laiolo.github.io/CvGenerator/</a><br>
