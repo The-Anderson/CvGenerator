@@ -44,12 +44,12 @@
       "institution": "Universidad Tecnológica Nacional (UTN)",
       "degree": "University Programmer Technician",
       "year": "2018 - 2020",
-      "description": "I graduate of 'University Technician in Programming' from the National Technical University of Argentina.",
+      "description": "I graduate of 'University Technician in Programming' from the National Technical Technical University of Argentina.",
       "subjects": [ 
-        {"semester": "Primer Cuatrimestre", "courses": ["Programación I", "Arquitectura y Sistemas Operativos", "Matemática", "Organización empresarial"]},
-        {"semester": "Segundo Cuatrimestre", "courses": ["Programación II", "Probabilidad y Estadística", "Base de Datos I", "Inglés I"]},
-        {"semester": "Tercer Cuatrimestre", "courses": ["Programación III", "Base de Datos II", "Metodología de Sistemas I", "Inglés II"]},
-        {"semester": "Cuarto Cuatrimestre", "courses": ["Programación IV", "Metodología de Sistemas II", "Introducción al análisis de datos", "Legislación", "Gestión de desarrollo de software"]}
+        {"semester": "First Semester", "courses": ["Programming I", "Architecture and Operating Systems", "Mathematics", "Business Organization"]},
+        {"semester": "Second Semester", "courses": ["Programming II", "Probability and Statistics", "Database I", "English I"]},
+        {"semester": "Third Semester", "courses": ["Programming III", "Database II", "Systems Methodology I", "English II"]},
+        {"semester": "Fourth Semester", "courses": ["Programming IV", "Systems Methodology II", "Introduction to Data Analysis", "Legislation", "Software Development Management"]}
       ]
     },
     {
